@@ -1,0 +1,35 @@
+{
+  "name": "@uedlinker/scripts",
+  "version": "0.1.0",
+  "description": "React 单页应用构建脚本",
+  "scripts": {
+    "commitmsg": "commitlint -E GIT_PARAMS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uedlinker/uedlinker-scripts.git"
+  },
+  "author": "李蔚生 <971353677@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uedlinker/uedlinker-scripts/issues"
+  },
+  "homepage": "https://github.com/uedlinker/uedlinker-scripts#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@uedlinker/commitlint-config": "^1.0.1",
+    "@uedlinker/eslint-config-base": "^1.0.0",
+    "eslint": "^5.2.0",
+    "husky": "^0.14.3"
+  },
+  "eslintConfig": {
+    "extends": "@uedlinker/eslint-config-base"
+  },
+  "eslintIgnore": [
+    "/fixture/",
+    "/node_modules/"
+  ],
+  "commitlint": {
+    "extends": ["@uedlinker/commitlint-config"]
+  }
+}
