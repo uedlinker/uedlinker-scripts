@@ -30,6 +30,14 @@
     "/node_modules/"
   ],
   "commitlint": {
-    "extends": ["@uedlinker/commitlint-config"]
+    "extends": [
+      "@uedlinker/commitlint-config"
+    ]
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^4.0.0-alpha",
+    "webpack": "^4.16.2",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.3"
   }
 }
