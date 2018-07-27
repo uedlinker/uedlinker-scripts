@@ -3,7 +3,6 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const common = require('./webpack.common')
-const { staticPath } = require('./paths')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -26,25 +25,6 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './template.html'),
-      favicon: '/favicon.ico',
     }),
   ],
-
-  devServer: {
-    compress: true,
-    contentBase: staticPath,
-    historyApiFallback: {
-      disableDotRule: true,
-    },
-    host: '0.0.0.0',
-    open: true,
-    openPage: '',
-    overlay: true,
-    port: 3000,
-    watchContentBase: true,
-    watchOptions: {
-      ignored: /node_modules/,
-    },
-    clientLogLevel: 'none',
-  },
 })

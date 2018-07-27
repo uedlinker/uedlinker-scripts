@@ -27,7 +27,6 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './template.html'),
-      favicon: '/favicon.ico',
       minify: true,
     }),
   ],
