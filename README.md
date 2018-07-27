@@ -16,7 +16,13 @@ React 生态中，我所知道的最出名的构建工具就是 [Create React Ap
 
 总之，此构建脚本就是在 [Create React App](https://github.com/facebook/create-react-app) 的基础上，解决以上问题，不 `eject` 时，还能满足开发需求。
 
-## 功能
+## TODO
+
+- [ ] 开发脚本用户提示信息；
+- [ ] 查看 webpack-dev-middleware 包，设置配置项；
+- [ ] 设置 webpack-server 的 add（插件） 选项；
+- [ ] 开发时自动打开网页；
+- [ ] 打包脚本用户提示信息；
 
 - [ ] 使用 [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) 创建 HTML 模板；
 - [ ] 支持 ES 最新的语法（包括在草案中的语法）和 JSX 语法；
