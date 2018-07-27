@@ -18,11 +18,11 @@ React 生态中，我所知道的最出名的构建工具就是 [Create React Ap
 
 ## TODO
 
-- [ ] 开发脚本用户提示信息；
+- [ ] dev 脚本用户提示信息；
 - [ ] 查看 webpack-dev-middleware 包，设置配置项；
 - [ ] 设置 webpack-server 的 add（插件） 选项；
-- [ ] 开发时自动打开网页；
-- [ ] 打包脚本用户提示信息；
+- [ ] dev 时自动打开网页；
+- [x] build 脚本用户提示信息；
 
 - [ ] 使用 [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) 创建 HTML 模板；
 - [ ] 支持 ES 最新的语法（包括在草案中的语法）和 JSX 语法；

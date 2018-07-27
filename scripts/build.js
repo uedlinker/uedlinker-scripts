@@ -6,10 +6,8 @@ const webpackProdConfig = require('../configs/webpack.prod')
 webpack(webpackProdConfig, (err, stats) => {
   if (err) {
     console.error(err.stack || err)
-    if (err.details) {
-      console.error(err.details)
-    }
-    return
+    if (err.details) console.error(err.details)
+    process.exit(1)
   }
 
   const info = stats.toJson()
@@ -21,4 +19,6 @@ webpack(webpackProdConfig, (err, stats) => {
   if (stats.hasWarnings()) {
     console.warn(info.warnings)
   }
+
+  console.log(stats.toString({ colors: true }))
 })
