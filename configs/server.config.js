@@ -9,4 +9,7 @@ module.exports = {
   devMiddleware: {
     publicPath: webpackDevConfig.output.publicPath,
   },
+  hotClient: {
+    logLevel: 'warn',
+  },
 }

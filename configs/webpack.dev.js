@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const merge = require('webpack-merge')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -138,6 +139,9 @@ module.exports = merge(common, {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BABEL_ENV': JSON.stringify('development'),
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './template.html'),
     }),

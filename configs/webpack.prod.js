@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const cssnano = require('cssnano')
 const merge = require('webpack-merge')
 const autoprefixer = require('autoprefixer')
@@ -167,6 +168,9 @@ module.exports = merge(common, {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BABEL_ENV': JSON.stringify('production'),
+    }),
     new CleanWebpackPlugin(['dist'], { root: appPath }),
     new CopyWebpackPlugin([
       { from: staticPath },
