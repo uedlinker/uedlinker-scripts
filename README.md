@@ -16,43 +16,6 @@ React 生态中，我所知道的最出名的构建工具就是 [Create React Ap
 
 总之，此构建脚本就是在 [Create React App](https://github.com/facebook/create-react-app) 的基础上，解决以上问题，不 `eject` 时，还能满足开发需求。
 
-## TODO
-
-- [ ] dev 脚本用户提示信息；
-- [ ] 查看 webpack-dev-middleware 包，设置配置项；
-- [ ] 设置 webpack-server 的 add（插件） 选项；
-- [ ] dev 时自动打开网页；
-- [x] build 脚本用户提示信息；
-
-- [ ] 使用 [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) 创建 HTML 模板；
-- [ ] 支持 ES 最新的语法（包括在草案中的语法）和 JSX 语法；
-- [ ] 支持在打包环境下，删除 PropTypes；
-- [ ] 支持打包 `.css` 后缀的文件；
-- [ ] 支持打包 `.scss` 后缀的文件；
-- [ ] 提取 CSS 单独生成一个文件，而不是嵌入 JS 中；
-- [ ] 支持 CSS 自动加前缀；
-- [ ] 支持在打包环境下压缩 CSS 代码；
-- [ ] 支持在打包环境下压缩 JS 代码（多进程）；
-- [ ] 支持打包图片文件；
-- [ ] 支持打包字体文件；
-- [ ] 支持打包其余文件（直接通过 file-loader 复制，文件不会经过处理）；
-- [ ] 支持在 `src` 目录下的所有文件或文件夹都有别名；
-- [ ] 支持在打包时复制静态文件夹（static）文件夹下的所有文件到打包目录；
-- [ ] 支持本地开发 Server；
-- [ ] 支持代码分离；
-- [ ] 支持 Manifest；
-- [ ] 支持 HMR；
-- [ ] 支持 PWA；
-- [ ] 支持 Flow；
-- [ ] 支持 Jest；
-- [ ] 提供 Polyfill；
-- [ ] 支持 Graphql；
-- [ ] 支持自定义 webpack、babel 和 ESLint 配置；
-- [ ] 支持自定义环境变量；
-- [ ] 支持自定义 HTML 模板文件；
-- [ ] 支持自定义源文件目录、静态资源文件目录；
-- [ ] 支持自定义 PUBLIC_PATH。
-
 ## 命令
 
 - [ ] 提供 `uedlinker-scripts dev` 开发命令；

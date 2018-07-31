@@ -1,26 +1,20 @@
 process.env.NODE_ENV = 'development'
+process.env.BABEL_ENV = 'development'
+
+process.on('unhandledRejection', err => {
+  throw err
+})
 
 const server = require('webpack-serve')
 const serverConfig = require('../configs/server.config')
 
 server({}, serverConfig).then(result => {
-  result.on('listening', () => {
-    console.log('服务已开启')
-  })
 
-  result.on('build-started', () => {
-    console.log('开始构建')
-  })
-
-  result.on('build-finished', () => {
-    console.log('构建成功')
-  })
-
-  result.on('compiler-error', () => {
-    console.log('构建出错')
-  })
-
-  result.on('compiler-warning', () => {
-    console.log('构建警告')
+  // 当用户主动结束进程时，关闭 server 服务
+  ['SIGINT', 'SIGTERM'].forEach(sign => {
+    process.on(sign, function () {
+      result.app.stop()
+      process.exit()
+    })
   })
 })
