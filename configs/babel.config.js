@@ -2,6 +2,7 @@ module.exports = {
   presets: [
     '@babel/preset-env',
     '@babel/preset-react',
+    '@babel/preset-flow',
   ],
 
   plugins: [
@@ -32,9 +33,6 @@ module.exports = {
 
   env: {
     production: {
-      presets: [
-        ['minify', { removeConsole: true, removeDebugger: true }],
-      ],
       plugins: [
         'transform-react-remove-prop-types',
       ],

@@ -7,9 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
 
 const common = require('./webpack.common')
 const { appPath, srcPath, staticPath } = require('./paths')
+
+// 默认在生产环境下没有 sourceMap
+// TODO: 需要用户自定义是否应该有 sourceMap
+const hasSourceMap = false
 
 module.exports = merge(common, {
   mode: 'production',
@@ -18,7 +23,7 @@ module.exports = merge(common, {
   // 暂时没有深究为什么使用这个选项，还不是很理解这个选项。
   // 如果有更好的选择，麻烦提交一个 Issue 并对比一下不同选项之间的差异。
   // 参考：http://cheng.logdown.com/posts/2016/03/25/679045
-  devtool: 'cheap-module-source-map',
+  devtool: hasSourceMap ? 'cheap-module-source-map' : '',
 
   output: {
     filename: 'assets/js/[name].[chunkhash].js',
@@ -186,6 +191,11 @@ module.exports = merge(common, {
         minifyJS: true,
         removeComments: true,
       },
+    }),
+    new BabelMinifyPlugin({
+      removeConsole: true,
+      removeDebugger: true,
+      mangle: { topLevel: true },
     }),
   ],
 })
