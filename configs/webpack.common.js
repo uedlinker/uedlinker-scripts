@@ -1,8 +1,12 @@
+const path = require('path')
 const { appPath, srcPath, entryPath, outputPath } = require('./paths')
 
 module.exports = {
   context: appPath,
-  entry: entryPath,
+  entry: [
+    path.resolve(__dirname, './polyfills.js'),
+    entryPath,
+  ],
 
   output: {
     path: outputPath,
