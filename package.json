@@ -5,6 +5,14 @@
   "scripts": {
     "commitmsg": "commitlint -E GIT_PARAMS"
   },
+  "bin": {
+    "uedlinker-scripts": "./bin/uedlinker-scripts.js"
+  },
+  "files": [
+    "bin",
+    "configs",
+    "scripts"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uedlinker/uedlinker-scripts.git"
@@ -62,6 +70,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.14",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^0.1.19",
+    "commander": "^2.16.0",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
