@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const cssnano = require('cssnano')
 const merge = require('webpack-merge')
 const autoprefixer = require('autoprefixer')
+const OfflinePlugin = require('offline-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -197,5 +198,6 @@ module.exports = merge(common, {
       removeDebugger: true,
       mangle: { topLevel: true },
     }),
+    new OfflinePlugin(),
   ],
 })
