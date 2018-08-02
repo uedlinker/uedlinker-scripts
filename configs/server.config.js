@@ -1,7 +1,8 @@
 const { staticPath } = require('./paths')
 const webpackDevConfig = require('./webpack.dev')
+const combineConfig = require('../utils/combineConfig')
 
-module.exports = {
+const defaultServeConfig = {
   config: webpackDevConfig,
   content: staticPath,
   open: true,
@@ -13,3 +14,5 @@ module.exports = {
     logLevel: 'warn',
   },
 }
+
+module.exports = combineConfig('server')(defaultServeConfig)

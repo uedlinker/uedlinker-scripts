@@ -12,7 +12,7 @@ const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
 
 const common = require('./webpack.common')
 const { appPath, srcPath, staticPath } = require('./paths')
-const combineCustomWebpackConfig = require('../utils/combineCustomWebpackConfig')
+const combineConfig = require('../utils/combineConfig')
 
 // 默认在生产环境下没有 sourceMap
 // TODO: 需要用户自定义是否应该有 sourceMap
@@ -207,4 +207,4 @@ const defaultProdConfig = merge(common, {
   ],
 })
 
-module.exports = combineCustomWebpackConfig(defaultProdConfig)
+module.exports = combineConfig('webpack')(defaultProdConfig)
