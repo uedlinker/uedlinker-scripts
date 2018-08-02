@@ -11,7 +11,8 @@
   "files": [
     "bin",
     "configs",
-    "scripts"
+    "scripts",
+    "utils"
   ],
   "repository": {
     "type": "git",
@@ -80,6 +81,7 @@
     "eslint-plugin-react": "^7.10.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^4.0.0-alpha",
+    "lodash": "^4.17.10",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
     "object-assign": "^4.1.1",

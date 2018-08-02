@@ -6,8 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const common = require('./webpack.common')
 const { appPath, srcPath } = require('./paths')
+const combineCustomWebpackConfig = require('../utils/combineCustomWebpackConfig')
 
-module.exports = merge(common, {
+const defaultDevConfig = merge(common, {
   mode: 'development',
 
   // 暂时没有深究为什么使用这个选项，还不是很理解这个选项。
@@ -147,3 +148,5 @@ module.exports = merge(common, {
     }),
   ],
 })
+
+module.exports = combineCustomWebpackConfig(defaultDevConfig)
