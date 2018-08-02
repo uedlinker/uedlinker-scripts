@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "basic",
+  "version": "0.1.0",
+  "description": "Basic example",
+  "scripts": {
+    "dev": "cross-env UEDLINKER_MY_ENV=my_dev uedlinker-scripts dev",
+    "build": "cross-env UEDLINKER_MY_ENV=my_prod uedlinker-scripts build",
+    "serve": "npm run build && serve dist"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-config-standard-react": "^6.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "less": "^3.8.0",
+    "less-loader": "^4.1.0",
+    "serve": "^9.4.0",
+    "webpack": "^4.16.3"
+  }
+}
