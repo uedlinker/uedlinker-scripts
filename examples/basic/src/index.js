@@ -12,6 +12,7 @@ const renderApp = Component => {
 
 renderApp(App)
 
+// 开启 HMR
 if (module.hot && process.env.NODE_ENV === 'development') {
   module.hot.accept(['./App'], () => {
     const App = require('./App').default
@@ -19,6 +20,7 @@ if (module.hot && process.env.NODE_ENV === 'development') {
   })
 }
 
+// 开启离线缓存
 if (process.env.NODE_ENV === 'production') {
   const OfflinePluginRuntime = require('offline-plugin/runtime').default
   OfflinePluginRuntime.install()
