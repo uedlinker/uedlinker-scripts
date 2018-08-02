@@ -32,7 +32,7 @@
     "extends": "@uedlinker/eslint-config-base"
   },
   "eslintIgnore": [
-    "/fixture/",
+    "/examples/",
     "/node_modules/"
   ],
   "commitlint": {
@@ -81,6 +81,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^4.0.0-alpha",
     "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
     "object-assign": "^4.1.1",
     "offline-plugin": "^5.0.5",
     "postcss-flexbugs-fixes": "^4.1.0",
