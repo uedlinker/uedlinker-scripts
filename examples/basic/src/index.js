@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import * as OfflinePluginRuntime from 'offline-plugin/runtime'
 
 import App from './App'
 
@@ -20,4 +19,7 @@ if (module.hot && process.env.NODE_ENV === 'development') {
   })
 }
 
-OfflinePluginRuntime.install()
+if (process.env.NODE_ENV === 'production') {
+  const OfflinePluginRuntime = require('offline-plugin/runtime').default
+  OfflinePluginRuntime.install()
+}

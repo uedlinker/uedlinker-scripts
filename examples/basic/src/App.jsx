@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class App extends Component {
-  state = { name: 'World' }
+// 加载 .css 文件
+import './reboot.css'
+// 加载 .scss 文件
+import './app.scss'
 
-  render () {
-    return (
-      <h1>Hello { this.state.name }</h1>
-    )
-  }
-}
+const App = () => (
+  <div className="app">
+    <h1>Hello World!</h1>
+  </div>
+)
 
 export default App

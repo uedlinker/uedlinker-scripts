@@ -1,31 +1,15 @@
 {
   "private": true,
-  "name": "fixture",
+  "name": "basic",
   "version": "0.1.0",
-  "description": "Fixture",
+  "description": "Basic example",
   "scripts": {
     "dev": "uedlinker-scripts dev",
-    "build": "uedlinker-scripts build",
-    "serve": "npm run build && serve dist"
+    "build": "uedlinker-scripts build"
   },
   "license": "MIT",
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
-  },
-  "devDependencies": {
-    "@uedlinker/eslint-config-base": "^1.0.0",
-    "@uedlinker/eslint-config-react": "^1.0.0",
-    "babel-eslint": "^8.2.6",
-    "eslint": "^5.2.0",
-    "eslint-plugin-react": "^7.10.0",
-    "serve": "^9.4.0"
-  },
-  "eslintConfig": {
-    "extends": "@uedlinker/eslint-config-react"
-  },
-  "eslintIgnore": [
-    "dist",
-    "node_modules"
-  ]
+  }
 }
