@@ -35,6 +35,19 @@ module.exports = {
     rules: [
       // 禁用 `require.ensure()`，动态加载使用 `import()`
       { parser: { requireEnsure: false } },
+
+      {
+        test: /\.jsx?$/,
+        include: srcPath,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          root: appPath,
+          cwd: appPath,
+          extends: path.resolve(__dirname, './babel.config.js'),
+          cacheDirectory: true,
+        },
+      },
     ],
   },
 

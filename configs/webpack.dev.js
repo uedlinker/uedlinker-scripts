@@ -5,7 +5,6 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const common = require('./webpack.common')
-const { appPath, srcPath } = require('./paths')
 const combineConfig = require('../utils/combineConfig')
 
 const defaultDevConfig = merge(common, {
@@ -25,19 +24,6 @@ const defaultDevConfig = merge(common, {
 
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        include: srcPath,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          root: appPath,
-          cwd: appPath,
-          extends: path.resolve(__dirname, './babel.config.js'),
-          cacheDirectory: true,
-        },
-      },
-
       {
         test: /\.css$/,
         use: [

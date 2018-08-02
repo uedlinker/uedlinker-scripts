@@ -27,6 +27,8 @@
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@uedlinker/commitlint-config": "^1.0.1",
+    "@uedlinker/eslint-config-base": "^1.0.0",
+    "eslint": "^5.2.0",
     "husky": "^0.14.3"
   },
   "eslintConfig": {
@@ -62,10 +64,7 @@
     "@babel/preset-env": "^7.0.0-beta.55",
     "@babel/preset-flow": "^7.0.0-beta.55",
     "@babel/preset-react": "^7.0.0-beta.55",
-    "@uedlinker/eslint-config-base": "^1.0.0",
-    "@uedlinker/eslint-config-react": "^1.1.0",
     "autoprefixer": "^9.0.2",
-    "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta.4",
     "babel-minify-webpack-plugin": "^0.3.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.14",
@@ -75,10 +74,6 @@
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
-    "eslint": "^5.2.0",
-    "eslint-loader": "^2.1.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-react": "^7.10.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^4.0.0-alpha",
     "lodash": "^4.17.10",

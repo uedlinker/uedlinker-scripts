@@ -11,7 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
 
 const common = require('./webpack.common')
-const { appPath, srcPath, staticPath } = require('./paths')
+const { appPath, staticPath } = require('./paths')
 const combineConfig = require('../utils/combineConfig')
 
 // 默认在生产环境下没有 sourceMap
@@ -36,40 +36,28 @@ const defaultProdConfig = merge(common, {
 
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        enforce: 'pre',
-        include: srcPath,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          // eslint-loader 的配置
-          // https://github.com/webpack-contrib/eslint-loader#options
-          cache: true,
-          emitError: true,
-          emitWarning: true,
-          failOnError: true,
-          // eslint CLIEngine 的配置
-          // https://eslint.org/docs/developer-guide/nodejs-api#cliengine
-          cwd: appPath,
-          baseConfig: {
-            extends: '@uedlinker/eslint-config-react',
-          },
-        },
-      },
-
-      {
-        test: /\.jsx?$/,
-        include: srcPath,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          root: appPath,
-          cwd: appPath,
-          extends: path.resolve(__dirname, './babel.config.js'),
-          cacheDirectory: true,
-        },
-      },
+      // {
+      //   test: /\.jsx?$/,
+      //   enforce: 'pre',
+      //   include: srcPath,
+      //   exclude: /node_modules/,
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     // eslint-loader 的配置
+      //     // https://github.com/webpack-contrib/eslint-loader#options
+      //     cache: true,
+      //     emitError: true,
+      //     emitWarning: true,
+      //     failOnError: true,
+      //     // eslint CLIEngine 的配置
+      //     // https://eslint.org/docs/developer-guide/nodejs-api#cliengine
+      //     cwd: appPath,
+      //     baseConfig: {
+      //       extends: '@uedlinker/eslint-config-react',
+      //     },
+      //     extensions: ['.js', '.jsx'],
+      //   },
+      // },
 
       {
         test: /\.css$/,
