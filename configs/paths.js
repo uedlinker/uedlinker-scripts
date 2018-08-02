@@ -23,6 +23,7 @@ module.exports = {
   outputPath,
 
   // 用户自定义文件路径
+  customBabelConfigPath: path.resolve(appPath, './babel.config.js'),
   customServerConfigPath: path.resolve(appPath, './server.config.js'),
   customWebpackConfigPath: path.resolve(appPath, './webpack.config.js'),
 }

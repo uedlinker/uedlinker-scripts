@@ -7,6 +7,7 @@ const merge = require('webpack-merge')
 const { isPlainObject, isFunction } = require('lodash')
 
 const {
+  customBabelConfigPath,
   customServerConfigPath,
   customWebpackConfigPath,
 } = require('../configs/paths')
@@ -15,6 +16,7 @@ module.exports = type => {
   let customPath = ''
 
   switch (type) {
+    case 'babel': customPath = customBabelConfigPath; break
     case 'server': customPath = customServerConfigPath; break
     case 'webpack': customPath = customWebpackConfigPath; break
   }

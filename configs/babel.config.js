@@ -1,4 +1,6 @@
-module.exports = {
+const combineConfig = require('../utils/combineConfig')
+
+const defaultBabelConfig = {
   presets: [
     '@babel/preset-env',
     '@babel/preset-react',
@@ -39,3 +41,5 @@ module.exports = {
     },
   },
 }
+
+module.exports = combineConfig('babel')(defaultBabelConfig)
