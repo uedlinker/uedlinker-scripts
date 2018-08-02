@@ -181,6 +181,15 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: staticPath },
     ]),
+    new BabelMinifyPlugin({
+      removeConsole: true,
+      removeDebugger: true,
+      mangle: { topLevel: true },
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/[name].[chunkhash].css',
+      chunkFilename: 'assets/css/[name].[chunkhash].css',
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './template.html'),
       // 下面的选项指定压缩 HTML 文件
@@ -192,11 +201,6 @@ module.exports = merge(common, {
         minifyJS: true,
         removeComments: true,
       },
-    }),
-    new BabelMinifyPlugin({
-      removeConsole: true,
-      removeDebugger: true,
-      mangle: { topLevel: true },
     }),
     new OfflinePlugin(),
   ],
