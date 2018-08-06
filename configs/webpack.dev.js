@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const common = require('./webpack.common')
 const combineConfig = require('../utils/combineConfig')
+const { appPath, srcPath } = require('./paths')
 
 const defaultDevConfig = merge(common, {
   mode: 'development',
@@ -24,6 +25,29 @@ const defaultDevConfig = merge(common, {
 
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        include: srcPath,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: require.resolve('thread-loader'),
+            options: {
+              poolTimeout: Infinity,
+            },
+          },
+          {
+            loader: 'babel-loader',
+            options: {
+              root: appPath,
+              cwd: appPath,
+              extends: path.resolve(__dirname, './babel.config.js'),
+              cacheDirectory: true,
+            },
+          },
+        ],
+      },
+
       {
         test: /\.css$/,
         use: [

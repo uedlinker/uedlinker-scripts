@@ -6,12 +6,13 @@ const autoprefixer = require('autoprefixer')
 const OfflinePlugin = require('offline-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
 
 const common = require('./webpack.common')
-const { appPath, staticPath } = require('./paths')
+const { appPath, srcPath, staticPath } = require('./paths')
 const combineConfig = require('../utils/combineConfig')
 
 // 默认在生产环境下没有 sourceMap
@@ -58,6 +59,24 @@ const defaultProdConfig = merge(common, {
       //     extensions: ['.js', '.jsx'],
       //   },
       // },
+
+      {
+        test: /\.jsx?$/,
+        include: srcPath,
+        exclude: /node_modules/,
+        use: [
+          'thread-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              root: appPath,
+              cwd: appPath,
+              extends: path.resolve(__dirname, './babel.config.js'),
+              cacheDirectory: true,
+            },
+          },
+        ],
+      },
 
       {
         test: /\.css$/,
@@ -193,6 +212,16 @@ const defaultProdConfig = merge(common, {
     }),
     new OfflinePlugin(),
   ],
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: hasSourceMap,
+      }),
+    ],
+  },
 })
 
 module.exports = combineConfig('webpack')(defaultProdConfig)

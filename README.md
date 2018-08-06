@@ -235,8 +235,6 @@ module.exports = {
 
 - [ ] 支持 `uedlinker-scripts test`
 - [ ] 支持 `uedlinker-scripts eject`
-- [ ] 支持 `uedlinker-scripts analyze`
-- [ ] 支持多线程编译
 
 [Flowtype]: https://flow.org/
 [Babel]: https://babeljs.io/
