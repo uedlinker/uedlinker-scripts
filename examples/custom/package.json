@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env UEDLINKER_MY_ENV=my_dev uedlinker-scripts dev",
     "build": "cross-env UEDLINKER_MY_ENV=my_prod uedlinker-scripts build",
-    "serve": "npm run build && serve dist"
+    "analyze": "uedlinker-scripts analyze"
   },
   "license": "MIT",
   "dependencies": {
@@ -25,7 +25,6 @@
     "eslint-plugin-standard": "^3.1.0",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
-    "serve": "^9.4.0",
     "webpack": "^4.16.3"
   }
 }

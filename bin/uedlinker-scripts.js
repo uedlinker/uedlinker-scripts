@@ -17,7 +17,7 @@ commander
   .arguments('<cmd>')
 
   .action(cmd => {
-    const cmds = ['dev', 'build']
+    const cmds = ['dev', 'build', 'analyze']
 
     if (cmds.includes(cmd)) {
       const script = path.resolve(__dirname, `../scripts/${cmd}.js`)
@@ -42,8 +42,9 @@ commander
     console.log()
     console.log('  命令:')
     console.log()
-    console.log('    dev    启动开发环境')
-    console.log('    build  生产环境打包')
+    console.log('    dev      启动开发环境')
+    console.log('    build    生产环境打包')
+    console.log('    analyze  使用交互式可缩放树形图可视化 Webpack 输出文件的大小')
     console.log()
   })
   .parse(process.argv)

@@ -5,7 +5,8 @@
   "description": "Basic example",
   "scripts": {
     "dev": "uedlinker-scripts dev",
-    "build": "uedlinker-scripts build"
+    "build": "uedlinker-scripts build",
+    "analyze": "uedlinker-scripts analyze"
   },
   "license": "MIT",
   "dependencies": {
