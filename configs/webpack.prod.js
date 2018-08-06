@@ -37,29 +37,6 @@ const defaultProdConfig = merge(common, {
 
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   enforce: 'pre',
-      //   include: srcPath,
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader',
-      //   options: {
-      //     // eslint-loader 的配置
-      //     // https://github.com/webpack-contrib/eslint-loader#options
-      //     cache: true,
-      //     emitError: true,
-      //     emitWarning: true,
-      //     failOnError: true,
-      //     // eslint CLIEngine 的配置
-      //     // https://eslint.org/docs/developer-guide/nodejs-api#cliengine
-      //     cwd: appPath,
-      //     baseConfig: {
-      //       extends: '@uedlinker/eslint-config-react',
-      //     },
-      //     extensions: ['.js', '.jsx'],
-      //   },
-      // },
-
       {
         test: /\.jsx?$/,
         include: srcPath,
