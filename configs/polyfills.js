@@ -6,3 +6,7 @@ if (typeof Promise === 'undefined') {
   // eslint-disable-next-line
   window.Promise = require('promise/lib/es6-extensions.js')
 }
+
+if (process.env.NODE_ENV === 'test') {
+  require('raf').polyfill(global)
+}

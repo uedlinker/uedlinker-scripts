@@ -1,6 +1,6 @@
 # uedlinker-scripts
 
-[React] 单页应用构建脚本。此脚本使用 [Webpack] 作为构建工具，使用 [Babel] 作为编译工具，使用 [webpack-server] 作为开发服务器。
+[React] 单页应用构建脚本。此脚本使用 [Webpack] 作为构建工具，使用 [Babel] 作为编译工具，使用 [webpack-server] 作为开发服务器，使用 [Jest] 作为测试工具。
 
 ## 目录
 
@@ -12,12 +12,13 @@
   - [开启 HMR](#开启-hmr)
   - [开启离线缓存](#开启离线缓存)
   - [导入图片和字体文件](#导入图片和字体文件)
-  - [关于 ESLint 的使用](#关于-eslint-的使用)
+  - [测试](#测试)
 - [自定义配置](#自定义配置)
   - [自定义环境变量](#自定义环境变量)
   - [自定义 Webpack 配置](#自定义-webpack-配置)
   - [自定义 webpack-server 配置](#自定义-webpack-server-配置)
   - [自定义 Babel 配置](#自定义-babel-配置)
+  - [自定义 Jest 配置](#自定义-jest-配置)
 - [问题](#问题)
 - [TODO](#todo)
 
@@ -50,10 +51,13 @@
 
 还有许多文件不支持解析，但可以在[自定义 Webpack 配置](#自定义-webpack-配置)中添加文件解析规则。
 
+**注意：** 此脚本在构建时没有使用 ESLint 检查代码。考虑到前端码农常用的几个编辑器大多都有 ESLint 插件提供实时提示功能，所以没有必要在构建时再次检查。
+
 ## 命令
 
 - **`uedlinker-scripts dev`：** 启动开发环境。
 - **`uedlinker-scripts build`：** 生产环境打包。
+- **`uedlinker-scripts test`：** 使用 Jest 运行测试代码。
 - **`uedlinker-scripts analyze`：** 可视化 Webpack 输出文件的大小。
 
 ## 使用
@@ -167,9 +171,21 @@ import myImg1 from './assets/images/example1.png?inline'
 import myImg2 from './assets/images/example2.png?external'
 ```
 
-### 关于 ESLint 的使用
+### 测试
 
-此脚本没有任何关于 ESLint 的使用。
+此脚本集成了 [Enzyme] 测试工具，并配置好了适配器，所以你可以直接在测试代码中使用 Enzyme 的功能。
+
+你也可以在 scripts 命令中使用 [Jest 的命令行参数](https://jestjs.io/docs/en/cli)。例如生成测试覆盖报告：
+
+```json
+{
+  "scripts": {
+    "coverage": "uedlinker-scripts test --coverage"
+  }
+}
+```
+
+在大多数情况下，建议通过配置文件[自定义 Jest 配置](#自定义-jest-配置)。
 
 ## 自定义配置
 
@@ -241,9 +257,15 @@ module.exports = {
 
 ### 自定义 Babel 配置
 
-在你根目录下添加一个 `babel.config.js` 文件就能够自定义 Babel 配置。与自定义 Webpack 配置一样，你可以导出一个对象或一个函数。当导出对象时，此脚本会合并你的自定义配置；当导出函数时，此脚本会把默认配置注入到你的函数中，并执行一次这个函数，使用函数返回的对象作为 Babel 的配置。
+在你的项目根目录下添加一个 `babel.config.js` 文件就能够自定义 Babel 配置。与自定义 Webpack 配置一样，你可以导出一个对象或一个函数。当导出对象时，此脚本会合并你的自定义配置；当导出函数时，此脚本会把默认配置注入到你的函数中，并执行一次这个函数，使用函数返回的对象作为 Babel 的配置。
 
 在你自定义 Babel 配置前，请先查看 [Babel] 的配置文档和脚本中的[默认 Babel 配置](https://github.com/uedlinker/uedlinker-scripts/blob/master/configs/babel.config.js)。
+
+### 自定义 Jest 配置
+
+在你的项目根目录下添加一个 `jest.config.js` 文件就能够自定义 Jest 配置。与自定义 Webpack 配置一样，你可以导出一个对象或一个函数。当导出对象时，此脚本会合并你的自定义配置；当导出函数时，此脚本会把默认配置注入到你的函数中，并执行一次这个函数，使用函数返回的对象作为 Jest 的配置。
+
+在你自定义 Jest 配置前，请先查看 [Jest] 的配置文档和脚本中的[默认 Jest 配置](https://github.com/uedlinker/uedlinker-scripts/blob/master/configs/jest.config.js)。
 
 ## 问题
 
@@ -251,15 +273,17 @@ module.exports = {
 
 ## TODO
 
-- [ ] 支持 `uedlinker-scripts test`
+- [x] 支持 `uedlinker-scripts test`
 - [ ] 支持 `uedlinker-scripts eject`
 - [ ] 支持 `uedlinker.config.js` 配置文件
 
+[Jest]: https://jestjs.io/
 [Flowtype]: https://flow.org/
 [Babel]: https://babeljs.io/
 [JSX]: https://jsx.github.io/
 [React]: https://reactjs.org/
 [Webpack]: https://webpack.js.org/
+[Enzyme]: https://github.com/airbnb/enzyme
 [cross-env]: https://www.npmjs.com/package/cross-env
 [url-loader]: https://github.com/webpack-contrib/url-loader
 [file-loader]: https://github.com/webpack-contrib/file-loader

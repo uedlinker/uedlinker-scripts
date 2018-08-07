@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "cross-env UEDLINKER_MY_ENV=my_dev uedlinker-scripts dev",
     "build": "cross-env UEDLINKER_MY_ENV=my_prod uedlinker-scripts build",
-    "analyze": "uedlinker-scripts analyze"
+    "analyze": "uedlinker-scripts analyze",
+    "test": "uedlinker-scripts test",
+    "coverage": "uedlinker-scripts test --coverage"
   },
   "license": "MIT",
   "dependencies": {
