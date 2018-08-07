@@ -75,6 +75,8 @@ npm install --save-dev @uedlinker/scripts
   "scripts": {
     "dev": "uedlinker-scripts dev",
     "build": "uedlinker-scripts build",
+    "test": "uedlinker-scripts test",
+    "test:coverage": "uedlinker-scripts test --coverage"
     "analyze": "uedlinker-scripts analyze"
   }
 }
@@ -88,6 +90,12 @@ npm run dev
 
 # 生产环境打包
 npm run build
+
+# 使用 Jest 运行测试代码
+npm run test
+
+# 使用 Jest 运行测试代码并生成覆盖报告
+npm run test:coverage
 
 # 可视化 Webpack 输出文件的大小
 npm run analyze
@@ -103,10 +111,10 @@ your-project-root
 ├── src
 │   └── index.js          // 入口文件，必须
 ├── static                // 静态文件目录，必须
-├── babel.config.js        // 自定义 Babel 配置文件
+├── babel.config.js       // 自定义 Babel 配置文件
 ├── package.json
-├── server.config.js       // 自定义 webpack-server 配置文件
-└── webpack.config.js      // 自定义 Webpack 配置文件
+├── server.config.js      // 自定义 webpack-server 配置文件
+└── webpack.config.js     // 自定义 Webpack 配置文件
 ```
 
 其中 `src/index.js` 和 `static` 是必须的。并且，你应该把所有的源文件（需要通过 Webpack 和 Babel 处理的文件）放在 `src` 目录中，把静态文件（直接复制到目标目录 `dist` 的文件）放到 `static` 目录中。
@@ -180,7 +188,7 @@ import myImg2 from './assets/images/example2.png?external'
 ```json
 {
   "scripts": {
-    "coverage": "uedlinker-scripts test --coverage"
+    "test:coverage": "uedlinker-scripts test --coverage"
   }
 }
 ```
