@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const cssnano = require('cssnano')
 const merge = require('webpack-merge')
 const autoprefixer = require('autoprefixer')
 const OfflinePlugin = require('offline-plugin')
@@ -10,6 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const common = require('./webpack.common')
 const { appPath, srcPath, staticPath } = require('./paths')
@@ -74,7 +74,6 @@ const defaultProdConfig = merge(common, {
                 autoprefixer({
                   flexbox: 'no-2009',
                 }),
-                cssnano(),
               ],
             },
           },
@@ -100,7 +99,6 @@ const defaultProdConfig = merge(common, {
                 autoprefixer({
                   flexbox: 'no-2009',
                 }),
-                cssnano(),
               ],
             },
           },
@@ -174,6 +172,13 @@ const defaultProdConfig = merge(common, {
     new MiniCssExtractPlugin({
       filename: 'assets/css/[name].[chunkhash].css',
       chunkFilename: 'assets/css/[name].[chunkhash].css',
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessorOptions: {
+        map: hasSourceMap && {
+          inline: false,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './template.html'),
