@@ -19,6 +19,7 @@
   - [自定义 webpack-server 配置](#自定义-webpack-server-配置)
   - [自定义 Babel 配置](#自定义-babel-配置)
   - [自定义 Jest 配置](#自定义-jest-配置)
+- [选项](#选项)
 - [问题](#问题)
 - [TODO](#todo)
 
@@ -275,15 +276,34 @@ module.exports = {
 
 在你自定义 Jest 配置前，请先查看 [Jest] 的配置文档和脚本中的[默认 Jest 配置](https://github.com/uedlinker/uedlinker-scripts/blob/master/configs/jest.config.js)。
 
+## 选项
+
+在自定义配置的基础上，提供了便捷选项。在你的项目根目录下添加 `uedlinker.config.js` 文件，然后导出一个对象便可。
+
+| 字段 | 类型 | 含义 | 默认值 | 环境 |
+| --- | --- | ---- | ----- | --- |
+| templatePath | string | HTML 模板路径 | 默认模板 | 开发环境和生产环境 |
+| polyfillsPath | string | Polyfills 路径 | 默认 Polyfills | 开发环境和生产环境 |
+| publicPath | string | 公共资源路径，一般情况下为 CDN 地址 | '/' | 生产环境 |
+| sourceMap | boolean | 是否开启 Souce Map | false | 生产环境 |
+| removeConsole | boolean | 移除 console.* | true | 生产环境 |
+
+示例：
+
+```js
+// uedlinker.config.js
+module.exports = {
+  templatePath: './src/index.html',        // 路径相对于路项目根目录
+  polyfillsPath: './src/libs/polyfills.js',  // 路径相对于路项目根目录
+  publicPath: '//cdn.example.com',         // 公共资源的 CDN 地址
+  sourceMap: true,                         // 开启 Souce Map
+  removeConsole: false,                    // 关闭移除 console.* 功能
+}
+```
+
 ## 问题
 
 当你遇到问题时，可以在[这里](https://github.com/uedlinker/uedlinker-scripts/issues/new)提出你的问题，我会尽量解决。如果你能够提供解决方案或 PR，那就最好不过了。
-
-## TODO
-
-- [x] 支持 `uedlinker-scripts test`
-- [ ] 支持 `uedlinker-scripts eject`
-- [ ] 支持 `uedlinker.config.js` 配置文件
 
 [Jest]: https://jestjs.io/
 [Flowtype]: https://flow.org/

@@ -1,6 +1,6 @@
-const path = require('path')
 const webpack = require('webpack')
 const { appPath, srcPath, entryPath, outputPath } = require('./paths')
+const { polyfillsPath } = require('./uedlinker.config')
 
 // 获取用户自定义环境变量并在 webpack 中定义，自定义环境变量必须以 `UEDLINKER_` 开头，
 // 在 `process.env` 对象上挂载了很多环境变量，但没有必须把这些环境变量都在 webpack 中定义。
@@ -15,7 +15,7 @@ for (let key in process.env) {
 module.exports = {
   context: appPath,
   entry: [
-    path.resolve(__dirname, './polyfills.js'),
+    polyfillsPath,
     entryPath,
   ],
 

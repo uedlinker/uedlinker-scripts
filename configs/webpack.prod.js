@@ -8,16 +8,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BabelMinifyPlugin = require('babel-minify-webpack-plugin')
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const common = require('./webpack.common')
-const { appPath, srcPath, staticPath } = require('./paths')
 const combineConfig = require('../utils/combineConfig')
-
-// 默认在生产环境下没有 sourceMap
-// TODO: 需要用户自定义是否应该有 sourceMap
-const hasSourceMap = false
+const { appPath, srcPath, staticPath } = require('./paths')
+const { templatePath, sourceMap, publicPath, removeConsole } = require('./uedlinker.config')
 
 const defaultProdConfig = merge(common, {
   mode: 'production',
@@ -26,13 +22,12 @@ const defaultProdConfig = merge(common, {
   // 暂时没有深究为什么使用这个选项，还不是很理解这个选项。
   // 如果有更好的选择，麻烦提交一个 Issue 并对比一下不同选项之间的差异。
   // 参考：http://cheng.logdown.com/posts/2016/03/25/679045
-  devtool: hasSourceMap ? 'cheap-module-source-map' : '',
+  devtool: sourceMap ? 'cheap-module-source-map' : '',
 
   output: {
     filename: 'assets/js/[name].[chunkhash].js',
     chunkFilename: 'assets/js/[name].[chunkhash].js',
-    // TODO: 生产环境下的 publicPath 应该使用用户配置的链接（大多数情况下是 CDN 地址）
-    publicPath: '/',
+    publicPath,
   },
 
   module: {
@@ -164,24 +159,12 @@ const defaultProdConfig = merge(common, {
     new CopyWebpackPlugin([
       { from: staticPath },
     ]),
-    new BabelMinifyPlugin({
-      removeConsole: true,
-      removeDebugger: true,
-      mangle: { topLevel: true },
-    }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/[name].[chunkhash].css',
       chunkFilename: 'assets/css/[name].[chunkhash].css',
     }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessorOptions: {
-        map: hasSourceMap && {
-          inline: false,
-        },
-      },
-    }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './template.html'),
+      template: templatePath,
       // 下面的选项指定压缩 HTML 文件
       // https://github.com/kangax/html-minifier#options-quick-reference
       minify: {
@@ -200,7 +183,19 @@ const defaultProdConfig = merge(common, {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: hasSourceMap,
+        sourceMap: !!sourceMap,
+        uglifyOptions: {
+          compress: {
+            drop_console: !!removeConsole,
+          },
+        },
+      }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: !!sourceMap && {
+            inline: false,
+          },
+        },
       }),
     ],
   },

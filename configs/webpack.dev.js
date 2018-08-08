@@ -5,8 +5,9 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const common = require('./webpack.common')
-const combineConfig = require('../utils/combineConfig')
 const { appPath, srcPath } = require('./paths')
+const combineConfig = require('../utils/combineConfig')
+const { templatePath } = require('./uedlinker.config')
 
 const defaultDevConfig = merge(common, {
   mode: 'development',
@@ -154,7 +155,7 @@ const defaultDevConfig = merge(common, {
       'process.env.BABEL_ENV': JSON.stringify('development'),
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './template.html'),
+      template: templatePath,
     }),
   ],
 })

@@ -11,6 +11,7 @@ const {
   customBabelConfigPath,
   customServerConfigPath,
   customWebpackConfigPath,
+  customUedlinkerConfigPath,
 } = require('../configs/paths')
 
 module.exports = type => {
@@ -21,6 +22,7 @@ module.exports = type => {
     case 'babel': customPath = customBabelConfigPath; break
     case 'server': customPath = customServerConfigPath; break
     case 'webpack': customPath = customWebpackConfigPath; break
+    case 'uedlinker': customPath = customUedlinkerConfigPath; break
   }
 
   return defaultConfig => {
