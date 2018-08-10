@@ -77,7 +77,7 @@ npm install --save-dev @uedlinker/scripts
     "dev": "uedlinker-scripts dev",
     "build": "uedlinker-scripts build",
     "test": "uedlinker-scripts test",
-    "test:coverage": "uedlinker-scripts test --coverage"
+    "test:coverage": "uedlinker-scripts test --coverage",
     "analyze": "uedlinker-scripts analyze"
   }
 }
@@ -161,8 +161,7 @@ if (module.hot && process.env.NODE_ENV === 'development') {
 // src/index.js
 
 if (process.env.NODE_ENV === 'production') {
-  const OfflinePluginRuntime = require('offline-plugin/runtime').default
-  OfflinePluginRuntime.install()
+  require('offline-plugin/runtime').install()
 }
 ```
 
