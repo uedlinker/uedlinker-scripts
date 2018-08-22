@@ -15,6 +15,7 @@ for (let key in process.env) {
 module.exports = {
   context: appPath,
   entry: [
+    "@babel/polyfill",
     polyfillsPath,
     entryPath,
   ],

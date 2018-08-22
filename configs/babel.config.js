@@ -2,7 +2,9 @@ const combineConfig = require('../utils/combineConfig')
 
 const defaultBabelConfig = {
   presets: [
-    '@babel/preset-env',
+    ['@babel/preset-env', {
+      "useBuiltIns": "entry"
+    }],
     '@babel/preset-react',
     '@babel/preset-flow',
   ],
