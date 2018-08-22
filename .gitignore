@@ -66,3 +66,6 @@ package-lock.json
 
 # misc
 .DS_store
+
+# Editor Files
+.history
