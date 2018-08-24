@@ -1,6 +1,6 @@
 {
   "name": "@uedlinker/scripts",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React 单页应用构建脚本",
   "scripts": {
     "commitmsg": "commitlint -E GIT_PARAMS"
